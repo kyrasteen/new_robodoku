@@ -5,11 +5,10 @@ class Row
     @data = []
     @possibilities = [1,2,3,4,5,6,7,8,9]
   end
-#input for row is string
+#input for row is array of nums
   def set_up_row(input)
-    numbers = input.split('')
-    row = numbers.each do |num|
-      @data << num.to_i
+    @data = input.each do |num|
+      @data << num
     end
     @data.push(0) until @data.length == 9
   end
