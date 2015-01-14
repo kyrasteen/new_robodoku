@@ -24,12 +24,22 @@ class RowTest < Minitest::Test
     assert_equal [1,2,3,4,5,6,7,8,9], row.possibilities
   end
 
+  def test_possibilites_reduce_from_nums_in_row
+    row = Row.new
+    input = "1234 6789"
+    row.solve(input)
+    assert_equal [5], row.possibilities
+  end
+
   def test_empty_spot_gets_filled_with_missing_number
-    skip
     row = Row.new
     input = "123 56789"
-    row.solve(input)
-    assert_equal [1,2,3,4,5,6,7,8,9], row.data
+    answer = row.solve(input)
+    assert_equal [1,2,3,4,5,6,7,8,9], answer
+  end
+
+  def test_empty_spots_get_filled_with_missing_numbers
+    skip
   end
 
 end
