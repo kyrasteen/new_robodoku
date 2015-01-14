@@ -20,6 +20,9 @@ class Solver
     grid.collect{|row| row.join}.join("\n")
   end
 
+  def solve_columns
+  end
+
 
 
 
