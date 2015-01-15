@@ -5,17 +5,21 @@ require 'minitest/pride'
 class SpotTest < Minitest::Test
 
   def test_it_has_possibilities
-    spot = Spot.new([0,1])
+    coordinates = {row:0, column:1}
+    spot = Spot.new(coordinates, 1)
     assert_equal [1,2,3,4,5,6,7,8,9], spot.possibilities
   end
 
   def test_it_has_coordinates
-    spot = Spot.new([0, 1])
-    assert_equal [0,1], spot.coordinates
+    coordinates = {row:0, column:1}
+    spot = Spot.new(coordinates,1)
+    assert_equal coordinates, spot.coordinates
   end
 
   def test_it_knows_what_square_it_is_in
-    skip
+    coordinates = {row:0, column:1}
+    spot = Spot.new(coordinates,1)
+    assert_equal 1, spot.square
   end
 
 end

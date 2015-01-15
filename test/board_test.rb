@@ -28,7 +28,7 @@ class BoardTest < Minitest::Test
     board = Board.new(input)
     board.insert_spots
     coordinates = {row:0, column: 3}
-    spot = Spot.new(coordinates)
+    spot = Spot.new(coordinates,1)
     assert_equal [1,2,3,' spot',5,6,7,8,9], board.row_maker(spot)
   end
 
@@ -38,7 +38,7 @@ class BoardTest < Minitest::Test
     board = Board.new(input)
     board.insert_spots
     coordinates = {row:0, column: 0}
-    spot = Spot.new(coordinates)
+    spot = Spot.new(coordinates,1)
     assert_equal ['spot', 1], board.column_maker(spot)
   end
 
@@ -47,8 +47,27 @@ class BoardTest < Minitest::Test
     board = Board.new(input)
     board.insert_spots
     coordinates = {row:0, column: 0}
-    spot = Spot.new(coordinates)
+    spot = Spot.new(coordinates,1)
     assert_equal ['spot', 1], board.column_maker(spot)
+  end
+
+  def test_it_selects_columns_for_a_square
+    input = "123456789\n123456789\n123456789"
+    board = Board.new(input)
+    board.insert_spots
+    coordinates = {row:0, column: 0}
+    spot = Spot.new(coordinates,1)
+    rows = board.row_selector_for_square(spot)
+    assert_equal [[1,2,3],[1,2,3],[1,2,3]], board.column_selector_for_square(spot, rows)
+  end
+
+  def test_it_makes_a_square
+    input = "123456789\n123456789\n123456789"
+    board = Board.new(input)
+    board.insert_spots
+    coordinates = {row:0, column: 0}
+    spot = Spot.new(coordinates,1)
+    assert_equal [[1,2,3],[1,2,3],[1,2,3]], board.square_maker(spot)
   end
 
 

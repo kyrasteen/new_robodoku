@@ -1,9 +1,9 @@
 require_relative 'board'
-
+require_relative 'row'
 class Solver
 
   def initialize(input)
-    @input = input
+    # @input = input
     @board = Board.new(input)
   end
 
@@ -12,15 +12,11 @@ class Solver
     #reduce possibilities for spot, or solve for spot in row
     #reduce possibilities for spot, or solve for spot in column
     #reduce possibilities for spot, or solve for spot in square
-    
-
-
     solve_rows
-    solve_columns
   end
 
   def solve_rows
-    grid = @board.set_up_board
+    grid = @board.set_up_grid
     grid = grid.collect do |line|
       row = Row.new
       row.solve(line)
@@ -29,7 +25,7 @@ class Solver
   end
 
   def solve_columns
-    grid = @board.set_up_board
+    grid = @board.set_up_grid
     grid = grid.collect do |line|
       row = Row.new
       row.solve(line)

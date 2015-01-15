@@ -20,8 +20,9 @@ class SolverTest < Minitest::Test
     input = File.read('./test/boards/board1.txt')
     solver = Solver.new(input)
     answer = solver.solve_columns
-    assert_equal File.read('./test/boards/solved_board.txt').chop, answer
+    assert_equal File.read('./test/boards/solved_board.txt'), answer
   end
+  
 
   # def test_it_solves_puzzle
   #   skip
